@@ -1,0 +1,635 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand-primary: #1A0A0F;
+    --brand-primary-hover: #3A1620;
+    --brand-primary-tint: #ECD0D8;
+    --brand-canvas: #F6E6EA;
+    --brand-card: rgba(255, 255, 255, 0.82);
+    --brand-border: #E2CBD2;
+    --brand-border-subtle: rgba(26, 10, 15, 0.08);
+    --brand-ink: #1A0A0F;
+    --brand-muted: #6B4F57;
+    
+    --color-success: #1E5A2D;
+    --color-warning: #9E6714;
+    --color-danger: #A82220;
+    --color-info: #2D4F7C;
+
+    --header-h: 84px;
+    --sidebar-pad: 20px;
+    --content-pad: 32px;
+    --header-pad-left: var(--sidebar-pad, 20px);
+    --header-pad-right: var(--content-pad, 32px);
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --sidebar-pad: 16px;
+      --content-pad: 16px;
+      --header-pad-left: 16px;
+      --header-pad-right: 16px;
+    }
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #F6E6EA;
+    color: #1A0A0F;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+  }
+
+  .font-mono-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Crystal & Silver-Glass Utilities */
+.silver-glass-panel {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.84) 0%, rgba(247, 240, 243, 0.76) 50%, rgba(255, 255, 255, 0.82) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 4px 0 24px -2px rgba(26, 10, 15, 0.04), inset -1px 0 0 rgba(26, 10, 15, 0.03);
+}
+
+.silver-glass-header {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(248, 241, 244, 0.78) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px -2px rgba(26, 10, 15, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Glass chip / card for menu items and header pills */
+.silver-glass-chip {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.70) 0%, rgba(248, 240, 243, 0.55) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom-color: rgba(230, 218, 222, 0.8);
+  box-shadow: 0 2px 6px -1px rgba(26, 10, 15, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.silver-glass-chip:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.90) 0%, rgba(250, 244, 246, 0.80) 100%);
+  border-color: rgba(255, 255, 255, 0.9);
+  border-bottom-color: rgba(240, 230, 234, 0.9);
+  box-shadow: 0 4px 12px -1px rgba(26, 10, 15, 0.07), 0 0 10px rgba(255, 255, 255, 0.6), inset 0 1px 1.5px rgba(255, 255, 255, 1);
+  transform: translateY(-0.5px);
+}
+
+.silver-glass-chip-active {
+  background: linear-gradient(145deg, #FFFFFF 0%, rgba(246, 234, 238, 0.96) 60%, rgba(255, 255, 255, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(220, 202, 208, 0.9);
+  box-shadow: 0 4px 14px -1px rgba(26, 10, 15, 0.08), 0 0 14px rgba(255, 255, 255, 0.8), inset 0 1.5px 2px rgba(255, 255, 255, 1);
+  color: #1A0A0F;
+}
+
+/* Sidebar Menu Items with Deep Maroon Hover & Active Lift */
+.sidebar-nav-chip {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.72) 0%, rgba(248, 240, 243, 0.58) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom-color: rgba(230, 218, 222, 0.8);
+  box-shadow: 0 2px 6px -1px rgba(26, 10, 15, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  color: #1A0A0F;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-nav-chip:hover {
+  background: #3A0A14 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 22px -3px rgba(58, 10, 20, 0.45), 0 2px 6px -1px rgba(26, 10, 15, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.sidebar-nav-chip:hover *,
+.sidebar-nav-chip:hover svg,
+.sidebar-nav-chip:hover span {
+  color: #FFFFFF !important;
+}
+
+.sidebar-nav-chip:hover .sidebar-badge {
+  background-color: #FFFFFF !important;
+  color: #3A0A14 !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Active Sidebar Menu Item - Permanently maroon-filled, white text, lifted -3px */
+.sidebar-nav-chip-active {
+  background: #3A0A14 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 22px -3px rgba(58, 10, 20, 0.45), 0 2px 6px -1px rgba(26, 10, 15, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-nav-chip-active *,
+.sidebar-nav-chip-active svg,
+.sidebar-nav-chip-active span {
+  color: #FFFFFF !important;
+}
+
+.sidebar-nav-chip-active .sidebar-badge {
+  background-color: #FFFFFF !important;
+  color: #3A0A14 !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Interactive Small Stat / Info Cards */
+.interactive-stat-card {
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.interactive-stat-card:hover {
+  background: #3A0A14 !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 32px -4px rgba(58, 10, 20, 0.48), 0 4px 12px -2px rgba(26, 10, 15, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.interactive-stat-card:hover *,
+.interactive-stat-card:hover p,
+.interactive-stat-card:hover span,
+.interactive-stat-card:hover h1,
+.interactive-stat-card:hover h2,
+.interactive-stat-card:hover h3,
+.interactive-stat-card:hover div,
+.interactive-stat-card:hover svg {
+  color: #FFFFFF !important;
+}
+
+.interactive-stat-card:hover .border-t {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.interactive-stat-card:hover .stat-card-badge {
+  background-color: #FFFFFF !important;
+  color: #3A0A14 !important;
+  border-color: #FFFFFF !important;
+}
+
+/* Dispatch Board Timeline Slot Boxes */
+.dispatch-slot-box {
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.dispatch-slot-box:hover {
+  background: #3A0A14 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 18px -2px rgba(58, 10, 20, 0.5), 0 2px 6px -1px rgba(26, 10, 15, 0.25) !important;
+  z-index: 20 !important;
+}
+
+.dispatch-slot-box:hover * {
+  color: #FFFFFF !important;
+}
+
+/* Blocked / Expired Driver Slot Box on Dispatch Board */
+.dispatch-slot-blocked {
+  background-color: #FDF0F1;
+  border: 1px solid #F8D0D4;
+  border-left: 3.5px solid #A82220 !important;
+  opacity: 0.65;
+  cursor: not-allowed;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.dispatch-slot-blocked:hover {
+  background: #3F0E18 !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  border-left: 3.5px solid #FF4D4D !important;
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 18px -2px rgba(168, 34, 32, 0.5), 0 2px 6px -1px rgba(26, 10, 15, 0.25), inset 3.5px 0 0 #FF4D4D !important;
+  z-index: 20 !important;
+}
+
+.dispatch-slot-blocked:hover * {
+  color: #FFFFFF !important;
+}
+
+/* Role Switcher Dropdown Chip with Maroon Hover */
+.role-dropdown-chip {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.72) 0%, rgba(248, 240, 243, 0.58) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom-color: rgba(230, 218, 222, 0.8);
+  box-shadow: 0 2px 6px -1px rgba(26, 10, 15, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  color: #1A0A0F;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.role-dropdown-chip:hover {
+  background: #3A0A14 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px -2px rgba(58, 10, 20, 0.45), 0 2px 6px -1px rgba(26, 10, 15, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.role-dropdown-chip:hover *,
+.role-dropdown-chip:hover span,
+.role-dropdown-chip:hover svg {
+  color: #FFFFFF !important;
+}
+
+/* Role Option in Switch Prototype Role Dropdown with Maroon Hover & Lift */
+.role-option-chip {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.72) 0%, rgba(248, 240, 243, 0.58) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom-color: rgba(230, 218, 222, 0.8);
+  box-shadow: 0 2px 6px -1px rgba(26, 10, 15, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  color: #1A0A0F;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.role-option-chip:hover {
+  background: #3A0A14 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 20px -2px rgba(58, 10, 20, 0.45), 0 2px 6px -1px rgba(26, 10, 15, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  z-index: 10;
+}
+
+.role-option-chip:hover *,
+.role-option-chip:hover span,
+.role-option-chip:hover div,
+.role-option-chip:hover svg {
+  color: #FFFFFF !important;
+}
+
+.role-option-chip:hover .role-active-badge {
+  background-color: #FFFFFF !important;
+  color: #3A0A14 !important;
+  border-color: #FFFFFF !important;
+}
+
+.role-option-chip-selected {
+  background: #3A0A14 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px -2px rgba(58, 10, 20, 0.45), 0 2px 6px -1px rgba(26, 10, 15, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.role-option-chip-selected *,
+.role-option-chip-selected span,
+.role-option-chip-selected div,
+.role-option-chip-selected svg {
+  color: #FFFFFF !important;
+}
+
+.role-option-chip-selected .role-active-badge {
+  background-color: #FFFFFF !important;
+  color: #3A0A14 !important;
+  border-color: #FFFFFF !important;
+}
+
+/* Silver-glass 1px glowing gradient divider */
+.silver-glass-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.5) 15%, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0.5) 85%, transparent 100%);
+  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.45);
+  position: relative;
+}
+.silver-glass-divider::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(26, 10, 15, 0.07) 50%, transparent 100%);
+}
+
+/* Sidebar Collapse Arrow Button with Maroon Hover & Lift */
+.collapse-toggle-btn {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 240, 243, 0.75) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(225, 210, 215, 0.85);
+  box-shadow: 0 2px 6px -1px rgba(26, 10, 15, 0.06), 0 0 0 1px rgba(26, 10, 15, 0.04);
+  color: #6B4F57;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.collapse-toggle-btn:hover {
+  background: #3A0A14 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px -2px rgba(58, 10, 20, 0.45), 0 2px 6px -1px rgba(26, 10, 15, 0.15) !important;
+}
+
+.collapse-toggle-btn:hover svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Sidebar Menu Items Staggered Entrance Animation from Bottom to Top */
+@keyframes sidebarItemRiseFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sidebar-nav-item-enter {
+  opacity: 0;
+  animation: sidebarItemRiseFromBottom 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Screen Content Entrance Animations - Slowed down to 600-900ms for clear visual motion */
+@keyframes textSlideLeftToRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes contentCardRiseIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dividerRiseIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Screen-level entrance cascade */
+.screen-entrance-wrapper h1,
+.screen-entrance-wrapper h2,
+.screen-entrance-wrapper h3,
+.screen-entrance-wrapper .screen-heading-reveal {
+  animation: textSlideLeftToRight 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.screen-entrance-wrapper p,
+.screen-entrance-wrapper .screen-text-reveal {
+  animation: textSlideLeftToRight 750ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 90ms;
+}
+
+.screen-entrance-wrapper .silver-glass-card,
+.screen-entrance-wrapper .silver-glass-panel,
+.screen-entrance-wrapper .interactive-stat-card,
+.screen-entrance-wrapper .crystal-card,
+.screen-entrance-wrapper .screen-card-entrance {
+  animation: contentCardRiseIn 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Stagger delay for cards inside grids (90-100ms intervals) */
+.screen-entrance-wrapper .grid > *:nth-child(1) { animation-delay: 40ms; }
+.screen-entrance-wrapper .grid > *:nth-child(2) { animation-delay: 140ms; }
+.screen-entrance-wrapper .grid > *:nth-child(3) { animation-delay: 240ms; }
+.screen-entrance-wrapper .grid > *:nth-child(4) { animation-delay: 340ms; }
+.screen-entrance-wrapper .grid > *:nth-child(5) { animation-delay: 440ms; }
+.screen-entrance-wrapper .grid > *:nth-child(6) { animation-delay: 540ms; }
+
+.screen-entrance-wrapper .silver-glass-divider,
+.screen-entrance-wrapper hr,
+.screen-entrance-wrapper .divider-entrance {
+  animation: dividerRiseIn 750ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 160ms;
+}
+
+/* Verification Center Chart Animation */
+@keyframes barGrowFromBottom {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.chart-background-bar {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scaleY(0);
+  opacity: 0;
+  animation: barGrowFromBottom 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes trendLineDrawLeftToRight {
+  0% {
+    stroke-dashoffset: 1200;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.verification-trend-chart path.recharts-curve.recharts-line-curve {
+  stroke-dasharray: 1200;
+  animation: trendLineDrawLeftToRight 1350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes markerRiseFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.6);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translateY(-2px) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.chart-square-dot {
+  opacity: 0;
+  animation: markerRiseFromBottom 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .screen-entrance-wrapper h1,
+  .screen-entrance-wrapper h2,
+  .screen-entrance-wrapper h3,
+  .screen-entrance-wrapper p,
+  .screen-entrance-wrapper .silver-glass-card,
+  .screen-entrance-wrapper .silver-glass-panel,
+  .screen-entrance-wrapper .interactive-stat-card,
+  .screen-entrance-wrapper .crystal-card,
+  .screen-entrance-wrapper .silver-glass-divider,
+  .sidebar-nav-item-enter,
+  .chart-background-bar,
+  .verification-trend-chart path.recharts-curve.recharts-line-curve,
+  .chart-square-dot {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+/* Card surfaces */
+.silver-glass-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, rgba(250, 242, 245, 0.75) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 6px 20px -3px rgba(26, 10, 15, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.85);
+}
+
+.silver-glass-card:hover {
+  box-shadow: 0 8px 26px -3px rgba(26, 10, 15, 0.07), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+.crystal-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, rgba(250, 242, 245, 0.75) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 6px 20px -3px rgba(26, 10, 15, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.85);
+}
+
+.crystal-btn-primary {
+  background: linear-gradient(135deg, #2D121B 0%, #1A0A0F 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 3px 8px -1px rgba(26, 10, 15, 0.35);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.crystal-btn-primary:hover {
+  background: linear-gradient(135deg, #3A1620 0%, #240E15 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 5px 14px -2px rgba(26, 10, 15, 0.42);
+}
+
+/* Deep Cream Hover Interaction for Card Sections across all pages */
+.hover-cream-card {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hover-cream-card:hover {
+  background-color: #ECD0D8 !important;
+  background-image: none !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 24px -4px rgba(26, 10, 15, 0.12), 0 2px 6px -1px rgba(26, 10, 15, 0.08) !important;
+  border-color: rgba(26, 10, 15, 0.20) !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Deep Cream Hover Interaction for Data Table Rows across all pages */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table tbody tr:not(.no-hover-row) {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+table tbody tr:not(.no-hover-row):hover {
+  background-color: #ECD0D8 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px -2px rgba(26, 10, 15, 0.12) !important;
+  position: relative;
+  z-index: 10;
+}
+
+table tbody tr:not(.no-hover-row):hover td {
+  background-color: transparent !important;
+}
+
+.hover-cream-row {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hover-cream-row:hover {
+  background-color: #ECD0D8 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px -2px rgba(26, 10, 15, 0.12) !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Custom scrollbars matching blush crystal aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F0DEE3;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9BFC7;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BE9CA6;
+}
+
+

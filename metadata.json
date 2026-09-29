@@ -1,0 +1,6 @@
+{
+  "name": "TripProof - NEMT Trip Verification & Dispatch",
+  "description": "Clean, paper-simple dispatch, EVV trip verification, and billing-ready claims software for small medical transportation providers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
